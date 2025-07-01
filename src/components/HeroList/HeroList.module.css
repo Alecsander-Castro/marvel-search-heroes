@@ -31,13 +31,13 @@
   align-items: center;
 }
 @media (max-width: 992px) {
-  .grid-container {
+  .container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 576px) {
-  .grid-container {
+  .container {
     grid-template-columns: 1fr;
   }
 }

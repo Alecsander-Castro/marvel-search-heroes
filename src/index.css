@@ -1,14 +1,35 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 body {
+  margin: 0;
+  padding: 0;
   font-family: "Work Sans", sans-serif;
-  background-color: #fff; /* cuidado, "#ffff" tem um f a mais */
+}
+
+.hero-container {
   margin: 0 auto;
   padding: 0 12px;
   max-width: 1140px;
-  box-sizing: border-box; /* garantir */
+  box-sizing: border-box;
   width: 100%;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #e62429;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

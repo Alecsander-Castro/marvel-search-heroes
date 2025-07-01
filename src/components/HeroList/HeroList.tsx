@@ -1,19 +1,21 @@
+// components/HeroList/HeroList.tsx
 import { Link } from "react-router-dom";
 import styles from "./HeroList.module.css";
 import type { Heroes } from "../../models/Heroes";
+import { useFavoritesStore } from "../../store/useFavoriteStore";
 
 interface HeroesListProps {
   heroes: Heroes[];
-  favorites: Heroes[];
-  toggleFavorite: (hero: Heroes) => void;
   showOnlyFavorites: boolean;
 }
 
-function HeroesList({ heroes, favorites, toggleFavorite }: HeroesListProps) {
+function HeroesList({ heroes }: HeroesListProps) {
+  const { toggleFavorite, isFavorited } = useFavoritesStore();
+
   return (
     <div className={styles.container}>
       {heroes.map((hero) => (
-        <div className={styles.card} key={hero.id}>
+        <div className={styles.card} key={hero.id} data-cy="hero-card">
           <Link to={`/hero-page/${hero.id}`}>
             <img
               className={styles.heroImg}
@@ -23,13 +25,14 @@ function HeroesList({ heroes, favorites, toggleFavorite }: HeroesListProps) {
             <div className={styles.heroInfo}>
               <p>{hero.name}</p>
               <img
+                data-cy="favorite-button"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                   toggleFavorite(hero);
                 }}
                 src={
-                  favorites.some((fav) => fav.id === hero.id)
+                  isFavorited(hero.id)
                     ? "/assets/Path.svg"
                     : "/assets/Path Copy 2.png"
                 }
