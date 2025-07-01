@@ -1,6 +1,6 @@
-# Marvel Heroes Explorer
+# Marvel Search Heroes
 
-Marvel Heroes Explorer é uma aplicação React que permite explorar e pesquisar heróis do universo Marvel. Você pode buscar heróis por nome, visualizar detalhes e favoritar até 5 heróis para acesso rápido.
+Marvel Search Heroes é uma aplicação React que permite explorar e pesquisar heróis do universo Marvel. Você pode buscar heróis por nome, visualizar detalhes e favoritar até 5 heróis para acesso rápido.
 
 Link do deploy : https://marvel-search-heroes-five.vercel.app/
 
@@ -64,7 +64,7 @@ toggleFavorite: (hero) => {
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/marvel-heroes-explorer.git
+git clone https://github.com/seu-usuario/marvel-search-heroes.git
 ```
 
 2. Instale as dependências:
