@@ -1,0 +1,43 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+.card {
+  overflow: hidden;
+}
+.card:hover heroImg {
+  transform: scale(1.1);
+}
+.heroImg {
+  width: 100%;
+  height: 220px;
+  transition: 0.3s;
+}
+.card a {
+  color: #404040;
+  font-weight: bold;
+  text-decoration: none;
+}
+.favorite {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.heroInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}

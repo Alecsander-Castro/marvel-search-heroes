@@ -13,6 +13,12 @@ export const getCharacters = async (): Promise<Heroes[]> => {
     return [];
   }
 };
+export const getCharactersByPrefix = async (prefix: string) => {
+  const response = await marvelAPI.get("/characters", {
+    params: { nameStartsWith: prefix },
+  });
+  return response.data.data.results;
+};
 export const getCharacterById = async (
   id: number | any
 ): Promise<Heroes | null> => {
