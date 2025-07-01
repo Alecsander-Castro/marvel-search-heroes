@@ -26,7 +26,7 @@ Marvel Heroes Explorer é uma aplicação React que permite explorar e pesquisar
 
 ## Implementação do limite de 5 favoritos
 
-No projeto, o gerenciamento do estado dos favoritos é feito usando **Zustand**, que é uma biblioteca simples e eficiente para estado global no React.
+No projeto, o gerenciamento do estado dos favoritos é feito usando **Zustand**.
 
 Ao tentar favoritar um novo herói, verificamos se o herói já está na lista e se o limite de 5 favoritos foi atingido:
 
