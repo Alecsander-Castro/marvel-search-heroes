@@ -2,6 +2,8 @@
 
 Marvel Heroes Explorer é uma aplicação React que permite explorar e pesquisar heróis do universo Marvel. Você pode buscar heróis por nome, visualizar detalhes e favoritar até 5 heróis para acesso rápido.
 
+Link do deploy : https://marvel-search-heroes-five.vercel.app/
+
 ---
 
 ## Funcionalidades
