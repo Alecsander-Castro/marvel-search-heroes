@@ -5,6 +5,7 @@ import HeroesList from "../../components/HeroList/HeroList";
 import { InputSearch } from "../../components/InputSearch/InputSearch";
 import { Footer } from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
+import { HeroCardSkeleton } from "../../components/HeroCardSkeleton/HeroCardSkeleton";
 
 function Home() {
   const {
@@ -16,6 +17,7 @@ function Home() {
     searchHero,
     setSearchHero,
     handleSearchHero,
+    loading,
   } = useHome();
 
   return (
@@ -72,8 +74,15 @@ function Home() {
             </div>
           </div>
         </div>
-
-        <HeroesList heroes={data} showOnlyFavorites={showOnlyFavorites} />
+        {loading ? (
+          <div className={styles.skeletonList}>
+            {Array.from({ length: 20 }).map((_, i) => (
+              <HeroCardSkeleton key={i} />
+            ))}
+          </div>
+        ) : (
+          <HeroesList heroes={data} showOnlyFavorites={showOnlyFavorites} />
+        )}
       </div>
       <Footer />
     </div>

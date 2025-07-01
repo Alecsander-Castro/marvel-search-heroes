@@ -10,6 +10,8 @@ export const useHome = () => {
   const [searchHero, setSearchHero] = useState<string>("");
   const [showOnlyFavorites, setShowOnlyFavorites] = useState<boolean>(false);
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   const { favorites } = useFavoritesStore();
 
   useEffect(() => {
@@ -17,8 +19,13 @@ export const useHome = () => {
   }, []);
 
   const loadHeroes = async () => {
-    const heroes = await getCharacters();
-    setData(heroes);
+    setLoading(true);
+    try {
+      const heroes = await getCharacters();
+      setData(heroes);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const toggleSortOrder = () => {
@@ -37,13 +44,19 @@ export const useHome = () => {
     if (e.key === "Enter") {
       e.preventDefault();
       setSortOrder(true);
+
       if (!searchHero.trim()) {
         loadHeroes();
         return;
       }
 
-      const response = await getCharactersByPrefix(searchHero);
-      setData(response);
+      setLoading(true);
+      try {
+        const response = await getCharactersByPrefix(searchHero);
+        setData(response);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -62,5 +75,6 @@ export const useHome = () => {
     handleSearchHero,
     showOnlyFavorites,
     handleShowFavorites,
+    loading,
   };
 };
