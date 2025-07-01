@@ -4,6 +4,7 @@ import { useHome } from "../../features/home/useHome";
 import HeroesList from "../../components/HeroList/HeroList";
 import { InputSearch } from "../../components/InputSearch/InputSearch";
 import { Footer } from "../../components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 function Home() {
   const {
@@ -21,7 +22,9 @@ function Home() {
     <div className={styles.container}>
       <div className="hero-container">
         <nav className={styles.nav}>
-          <img src="assets/Group.png" alt="logo" />
+          <Link to="/">
+            <img src="assets/Group.png" alt="logo" />
+          </Link>
           <h1>EXPLORE O UNIVERSO</h1>
           <span>
             Mergulhe no domínio deslumbrante de todos os personagens clássicos

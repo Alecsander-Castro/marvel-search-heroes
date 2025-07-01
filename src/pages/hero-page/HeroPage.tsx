@@ -1,56 +1,13 @@
 // pages/HeroPage.tsx
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import {
-  getCharacterById,
-  getLatestComicByCharacterId,
-} from "../../services/marvel";
-import type { Heroes } from "../../models/Heroes";
-import type { Comic } from "../../models/Comic";
+import { Link } from "react-router-dom";
 import styles from "./HeroPage.module.css";
 import { Footer } from "../../components/Footer/Footer";
 import { useFavoritesStore } from "../../store/useFavoriteStore";
+import { useHeroPage } from "../../features/hero-page/useHeroPage";
 
 function HeroPage() {
-  const { id } = useParams();
-  const [hero, setHero] = useState<Heroes | null>(null);
-  const [latestsComic, setLatestsComic] = useState<Comic[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
+  const { hero, latestsComic, loading, formattedDate } = useHeroPage();
   const { toggleFavorite, isFavorited } = useFavoritesStore();
-
-  const onsale = latestsComic[0]?.dates.find(
-    (d) => d.type === "onsaleDate"
-  )?.date;
-
-  const formattedDate = onsale
-    ? new Date(onsale).toLocaleDateString("pt-BR", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
-    : null;
-
-  useEffect(() => {
-    async function loadHero() {
-      if (!id) return;
-
-      setLoading(true);
-      try {
-        const character = await getCharacterById(Number(id));
-        const comic = await getLatestComicByCharacterId(Number(id));
-
-        setHero(character);
-        setLatestsComic(comic);
-      } catch (error) {
-        console.error("Erro ao carregar dados:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadHero();
-  }, [id]);
 
   return (
     <div className={styles.container}>
